@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <link rel="icon" href="/assets/herobrine_head.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Márcio Herobrine</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="name">marcio herobrine</div>
+      <img src="/assets/herobrine_head.png" alt="marcio"">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="right">
+        <h2>members</h2>
+        </div>
+  </div>
+
+  <script>
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    var members = [
+      {
+        "nick": "f69",
+        "avatar": "/assets/avatars/f69.jpg",
+        "message": "solve soft skill with gdb"
+      },
+      {
+        "nick": "celesian",
+        "avatar": "/assets/avatars/celesian.png",
+        "message": "birbiribrib pugrecon bribiribrirbibri",
+        "links": { 
+          "github": "https://github.com/c3l3si4n",
+          "blog": "https://celes.in/"
+        }
+      },
+      {
+        "nick": "22",
+        "avatar": "/assets/avatars/22.jpg",
+        "message": "parfum enjoyer and pro guesser",
+      },
+      {
+        "nick": "vsm",
+        "avatar": "/assets/avatars/vsm.png",
+        "message": "solving LFI challenges",
+        "links": {
+          "links": "https://beacons.ai/vsmsz"
+        }
+      },
+    ];
+    shuffle(members);
+
+    const container = document.querySelector('.right');
+    members.forEach(memberData => {
+      const memberDiv = document.createElement('div');
+      memberDiv.className = 'member';
+
+      const imgElement = document.createElement('img');
+      imgElement.src = memberData.avatar; 
+      imgElement.alt = memberData.nick + " avatar"; 
+
+      const infoDiv = document.createElement('div');
+      infoDiv.className = 'info'; 
+      
+      const nameElement = document.createElement('b');
+      nameElement.textContent = memberData.nick; 
+      
+      const messageElement = document.createElement('p');
+      messageElement.textContent = memberData.message; 
+      
+      if (memberData.links) {
+        messageElement.appendChild(document.createElement('br'));
+        
+        Object.keys(memberData.links).forEach(linkText => {
+          const linkUrl = memberData.links[linkText];
+          
+          const aElement = document.createElement('a');
+          aElement.href = linkUrl; 
+          aElement.textContent = linkText; 
+          aElement.target = "_blank"; 
+          aElement.rel = "noopener noreferrer"; 
+
+          messageElement.appendChild(aElement);
+          messageElement.appendChild(document.createTextNode(' ')); 
+        });
+      }
+      
+      infoDiv.appendChild(nameElement);
+      infoDiv.appendChild(messageElement);
+      
+      memberDiv.appendChild(imgElement);
+      memberDiv.appendChild(infoDiv);
+      
+      container.appendChild(memberDiv);
+    });
+  </script>
+
+</body>
+</html>
