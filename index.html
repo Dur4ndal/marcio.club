@@ -62,6 +62,25 @@
         "avatar": "/assets/avatars/luska.png",
         "message": "useless vulnerabilities enjoyer",
       },
+      {
+        "nick": "titanium",
+        "avatar": "/assets/avatars/titanium.png",
+        "message": (function() {
+          const messages = [
+            "tells LLMs they're adopted",
+            "AI Told him to touch grass",
+            "faz 1000 e dorme",
+            "cs2 player",
+            "winapi power user"
+          ];
+          return messages[Math.floor(Math.random() * messages.length)];
+        })(),
+        "links": {
+          "github": "https://github.com/bruno-1337/",
+          "website": "https://mullvad.vip",
+          "blog": "https://blog.mullvad.vip"
+        },
+      },
     ];
     shuffle(members);
 
