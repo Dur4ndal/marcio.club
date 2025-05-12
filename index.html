@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
@@ -17,9 +18,67 @@
 
     <div class="divider"></div>
 
-    <div class="right">
-        <h2>members</h2>
+    <div id="right">
+      <h2 id="header">members</h2>
+      <div class="member">
+        <img src="/assets/avatars/f69.jpg" alt="f69 avatar">
+        <div class="info">
+          <b>f69</b>
+          <p>solve soft skill with gdb</p>
         </div>
+      </div>
+
+      <div class="member">
+        <img src="/assets/avatars/celesian.png" alt="celesian avatar">
+        <div class="info">
+          <b>celesian</b>
+          <p>birbiribrib pugrecon bribiribrirbibri<br>
+            <a href="https://github.com/c3l3si4n" target="_blank" rel="noopener noreferrer">github</a>
+            <a href="https://celes.in/" target="_blank" rel="noopener noreferrer">blog</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="/assets/avatars/22.jpg" alt="22 avatar">
+        <div class="info">
+          <b>22</b>
+          <p>parfum enjoyer and pro guesser<br>
+            <a href="https://x.com/0x22sh" target="_blank" rel="noopener noreferrer">x</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="/assets/avatars/vsm.png" alt="vsm avatar">
+        <div class="info">
+          <b>vsm</b>
+          <p>solving LFI challenges<br>
+          <a href="https://beacons.ai/vsmsz" target="_blank" rel="noopener noreferrer">links</a> </p>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="/assets/avatars/luska.png" alt="luska avatar">
+        <div class="info">
+          <b>luska</b>
+          <p>useless vulnerabilities enjoyer<br>
+          </p>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="/assets/avatars/titanium.png" alt="titanium avatar">
+        <div class="info">
+          <b>titanium</b>
+          <p>AI Told him to touch grass<br>
+            <a href="https://github.com/bruno-1337/" target="_blank" rel="noopener noreferrer">github</a>
+            <a href="https://mullvad.vip" target="_blank" rel="noopener noreferrer">website</a>
+            <a href="https://blog.mullvad.vip" target="_blank" rel="noopener noreferrer">blog</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -28,109 +87,19 @@
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
+      return array;
     }
-    var members = [
-      {
-        "nick": "f69",
-        "avatar": "/assets/avatars/f69.jpg",
-        "message": "solve soft skill with gdb"
-      },
-      {
-        "nick": "celesian",
-        "avatar": "/assets/avatars/celesian.png",
-        "message": "birbiribrib pugrecon bribiribrirbibri",
-        "links": { 
-          "github": "https://github.com/c3l3si4n",
-          "blog": "https://celes.in/"
-        }
-      },
-      {
-        "nick": "22",
-        "avatar": "/assets/avatars/22.jpg",
-        "message": "parfum enjoyer and pro guesser",
-        "links": {
-          "x": "https://x.com/0x22sh"
-        }
-      },
-      {
-        "nick": "vsm",
-        "avatar": "/assets/avatars/vsm.png",
-        "message": "solving LFI challenges",
-        "links": {
-          "links": "https://beacons.ai/vsmsz"
-        }
-      },
-      {
-        "nick": "luska",
-        "avatar": "/assets/avatars/luska.png",
-        "message": "useless vulnerabilities enjoyer",
-      },
-      {
-        "nick": "titanium",
-        "avatar": "/assets/avatars/titanium.png",
-        "message": (function() {
-          const messages = [
-            "tells LLMs they're adopted",
-            "AI Told him to touch grass",
-            "faz 1000 e dorme",
-            "cs2 player",
-            "winapi power user"
-          ];
-          return messages[Math.floor(Math.random() * messages.length)];
-        })(),
-        "links": {
-          "github": "https://github.com/bruno-1337/",
-          "website": "https://mullvad.vip",
-          "blog": "https://blog.mullvad.vip"
-        },
-      },
-    ];
-    shuffle(members);
+    
+    const container = document.querySelector('#right');
+    let members = Array.from(document.getElementsByClassName('member'));
+    members = shuffle(members)
 
-    const container = document.querySelector('.right');
-    members.forEach(memberData => {
-      const memberDiv = document.createElement('div');
-      memberDiv.className = 'member';
+    members.forEach(member => {
+      container.appendChild(member)
+    })
 
-      const imgElement = document.createElement('img');
-      imgElement.src = memberData.avatar; 
-      imgElement.alt = memberData.nick + " avatar"; 
-
-      const infoDiv = document.createElement('div');
-      infoDiv.className = 'info'; 
-      
-      const nameElement = document.createElement('b');
-      nameElement.textContent = memberData.nick; 
-      
-      const messageElement = document.createElement('p');
-      messageElement.textContent = memberData.message; 
-      
-      if (memberData.links) {
-        messageElement.appendChild(document.createElement('br'));
-        
-        Object.keys(memberData.links).forEach(linkText => {
-          const linkUrl = memberData.links[linkText];
-          
-          const aElement = document.createElement('a');
-          aElement.href = linkUrl; 
-          aElement.textContent = linkText; 
-          aElement.target = "_blank"; 
-          aElement.rel = "noopener noreferrer"; 
-
-          messageElement.appendChild(aElement);
-          messageElement.appendChild(document.createTextNode(' ')); 
-        });
-      }
-      
-      infoDiv.appendChild(nameElement);
-      infoDiv.appendChild(messageElement);
-      
-      memberDiv.appendChild(imgElement);
-      memberDiv.appendChild(infoDiv);
-      
-      container.appendChild(memberDiv);
-    });
   </script>
 
 </body>
+
 </html>

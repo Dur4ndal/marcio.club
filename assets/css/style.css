@@ -52,14 +52,14 @@ body {
     flex-shrink: 0;
   }
 
-  .right {
+  #right {
     display: flex;
     flex-direction: column;
     gap: 30px; 
     flex-grow: 1; 
   }
 
-  .right h2 {
+  #right h2 {
       font-size: 24px;
       margin-bottom: 15px;
       font-family: monospace; 
@@ -137,7 +137,7 @@ body {
         margin: 20px 0; 
     }
 
-    .right {
+    #right {
         gap: 20px;
         align-items: center; 
         width: 100%; 
@@ -170,10 +170,10 @@ body {
         .left img {
             width: 120px;
         }
-        .right {
+        #right {
             gap: 15px; 
         }
-        .right h2 {
+        #right h2 {
             font-size: 20px; 
         }
    }
